@@ -31,7 +31,8 @@
                 "glob": "**/*",
                 "input": "src/assets",
                 "output": "assets"
-              }
+              },
+              "src/_redirects"
             ],
             "scripts": [
               "node_modules/@iconify/iconify/dist/iconify.min.js"
