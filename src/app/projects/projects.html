@@ -1,0 +1,24 @@
+<div class="border-b border-neutral-900 pb-4">
+    <h2 class="my-20 text-center text-4xl">Projects</h2>
+    <div>
+            @for(item of projectsList; track $index;  let i = $index;){ 
+                <div class="mb-8 flex flex-wrap lg:justify-center">
+                    <div #leftCol   [@slideInLeft]="leftVisible[i] ? 'visible' : 'hidden'"  class="w-full lg:w-1/4">
+                             <div [class]="item.title === 'Breeze Hotel & Restaurant Web App' ? 'bg-white p-1 mb-6 rounded' : item.title === 'Get Gorgeous Salon Web App' ? 'bg-neutral-900 p-1 mb-6 rounded' : 'mb-6 '" class="w-fit">
+                            <img [src]="item.image" alt="{{item.title}}" width="150" height="150" class="rounded" >
+                        </div> 
+                    </div> 
+                    <div #rightCol  [@slideInRight]="rightVisible[i] ? 'visible' : 'hidden'"  class="w-full max-w-xl lg:w-3/4">
+                        <h6 class="mb-2 font-semibold">{{item.title}}</h6>
+                        <p class="mb-4 text-neutral-400">{{item.description}}</p>
+                        <div class="flex flex-wrap">
+                            @for(tech of item.technologies; track $index){
+                                <span class="mr-2 mb-2 rounded bg-neutral-900 px-2 py-1 text-sm font-medium text-purple-800">{{tech}}</span>
+                            }
+                        </div>
+                       
+                    </div>
+                </div>
+            }
+    </div>
+</div>

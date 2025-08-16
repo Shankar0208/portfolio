@@ -1,0 +1,11 @@
+<div class="border-b border-neutral-800 pb-24">
+    <h2 class="my-20 text-4xl text-center">Technologies</h2>
+    <div  #leftSection
+    [@slideInLeft]="leftVisible ? 'visible' : 'hidden'" class="flex flex-wrap items-center justify-center gap-4">
+        @for ( icon of icons; track $index; let i = $index) {
+            <div  [@float]="floatStates[i]" class="rounded-2xl border-4 border-neutral-800 p-4">
+                <iconify-icon [icon]="icon" width="72" height="72"></iconify-icon>
+            </div>
+        } 
+    </div>
+</div>

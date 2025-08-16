@@ -1,0 +1,29 @@
+<div class="border-b border-neutral-900 pb-4">
+    <h2 class="my-20 text-center text-4xl">Experience</h2>
+    <div>
+        @for (item of experienceList; track $index; let i = $index;) {
+            <div class="mb-8 flex flex-wrap lg:justify-center">
+                <div  #leftCol   [@slideInLeft]="leftVisible[i] ? 'visible' : 'hidden'" class="w-full lg:w-1/4">
+                    <p class="mb-2 text-sm text-neutral-400">{{item.year}}</p>
+                </div>
+                <div  #rightCol  [@slideInRight]="rightVisible[i] ? 'visible' : 'hidden'" class="w-full max-w-xl lg:w-3/4"> 
+                        <h6 class="mb-2 font-semibold">
+                            {{ item.role }} - <span class="text-sm text-purple-100">
+                                {{item.company}}
+                            </span>
+                        </h6>
+                        <p class="mb-4 text-neutral-400">{{item.description}}</p>
+                        <div class="flex flex-wrap">
+                            @for(tech of item.technologies; track $index){
+                                <span class="mr-2 mt-4 bg-neutral-900 px-2 py-1 text-sm font-medium text-purple-800">
+                                    {{tech}}
+                                </span>
+                            }
+                        </div>
+                        
+                </div>
+            </div>
+         
+        }
+    </div>
+</div>

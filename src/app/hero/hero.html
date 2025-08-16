@@ -2,14 +2,19 @@
     <div class="flex flex-wrap">
         <div class="w-full lg:w-1/2">
             <div class="flex flex-col items-center lg:items-start">
-                <h1 class="pb-16 text-16xl font-thin tracking-tight lg:mt-16 lg:text-8xl">{{ heroDetails.name }}</h1>
-                <span class="bg-gradient-to-r from-pink-300 via-slate-500 to-purple-500 bg-clip-text text-4xl tracking-tight text-transparent">
+                <h1 @slideInLeft0 class="pb-16 text-6xl font-thin tracking-tight lg:mt-16 lg:text-8xl">{{ heroDetails.name }}</h1>
+                <span @slideInLeft0.5 class="bg-gradient-to-r from-pink-300 via-slate-500 to-purple-500 bg-clip-text text-4xl tracking-tight text-transparent">
                     {{ heroDetails.title }}
                 </span>
-                <p class="my-2 max-w-xl py-6 font-light tracking-tight">
+                <p @slideInLeft1 class="my-2 max-w-xl py-6 font-light tracking-tight">
                     {{ heroDetails.description }}
                 </p>
             </div>
         </div>
+        <div class="w-full lg:w-1/2 lg:p-8">
+            <div class="flex justify-center">
+                <img @slideInRight1 [src]="heroDetails.image" alt="{{ heroDetails.name }}">
+            </div>
+        </div>
     </div>
-</div>
+</div> 
