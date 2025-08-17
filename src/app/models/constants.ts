@@ -5,10 +5,8 @@ interface HeroDetails {
     image: string;
 }
 
-interface AboutContent {
-    name: string;
-    description: string;
-    image: string;
+interface AboutContent { 
+    description: string[]; 
 }
 
 export interface experienceContent{
@@ -29,14 +27,14 @@ export const heroDetails: HeroDetails = {
     name: 'Shankar',
     title: 'Full Stack Developer',
     description: 'Experienced Full Stack Web Developer with over 6 years of hands-on experience in building responsive and high-performance web applications. Proficient in front-end technologies such as HTML, CSS, Bootstrap, Tailwind CSS, Sass, Material UI, JavaScript, TypeScript, Angular, WordPress, and Joomla, along with strong back-end expertise in Node.js, Express.js, Fastify, and AWS Lambda. Skilled in developing scalable, maintainable, and user-friendly web solutions. Seeking a Full Stack Developer role to leverage both front-end and back-end capabilities to deliver impactful digital experiences.',
-    image: 'assets/shankarProfile.jpg',
+    image: 'assets/hero.jpg',
 }
 
-export const aboutContent: AboutContent = { 
-    name: 'Shankar',
-    description: 'My journey in web development began with a curiosity to understand how ideas on paper could transform into interactive digital experiences. Over the past 6+ years, that curiosity has grown into a passion for building responsive, high-performance applications that people love to use. From crafting pixel-perfect UIs with HTML, CSS, and modern frameworks like Angular, to engineering secure and scalable back-end solutions with Node.js and AWS, I enjoy bridging the gap between design and functionality. I believe great software is not just about clean code, but about creating seamless, meaningful user experiences that leave a lasting impact.',
-    image: 'assets/shankarProfile.jpg',
-}
+export const aboutContent: AboutContent = {
+description: ['I am a Full Stack Web Developer with 6+ years of experience in building responsive, high-performance web applications. My expertise spans modern front-end technologies like HTML, CSS, Bootstrap, Tailwind CSS, Sass, Material UI, JavaScript, TypeScript, Angular, WordPress, and Joomla, along with strong back-end proficiency in Node.js, Express.js, Fastify, and AWS Lambda. I specialize in creating scalable, maintainable, and user-friendly solutions that seamlessly integrate front-end design with back-end functionality, ensuring performance, security, and accessibility across devices.',
+'My journey began with a curiosity for how digital experiences are built, which has evolved into a passion for crafting impactful applications. Over the years, I’ve mentored teams, solved complex technical challenges, and delivered solutions that balance clean code, optimized performance, and modern design. I thrive in collaborative environments where innovation meets quality, and my goal is to create meaningful software that not only works flawlessly but also enhances the way people interact with technology.'
+]
+} 
 
 export const experience: experienceContent[] = [
     {

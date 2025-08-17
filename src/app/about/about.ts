@@ -1,6 +1,8 @@
 import {  Component,  ElementRef, 
   NgZone, 
-  ViewChild } from '@angular/core';
+  QueryList, 
+  ViewChild, 
+  ViewChildren} from '@angular/core';
 import { aboutContent } from '../models/constants';  
 import { sideTrigger } from '../models/animations';
 
@@ -15,50 +17,44 @@ import { sideTrigger } from '../models/animations';
 export class About {
   protected aboutContent = aboutContent;
  
-  @ViewChild('leftSection') leftSection!: ElementRef;
-  @ViewChild('rightSection') rightSection!: ElementRef;
-
-  leftVisible = false;
-  rightVisible = false;
-
-  constructor(
-    private ngZone: NgZone 
-  ) {}
-
-  ngAfterViewInit() {
-    setTimeout(() => {
-      this.observeElement(this.leftSection, () => {
-        this.ngZone.run(() => {
-          this.leftVisible = true; 
-        });
-      });
-
-      this.observeElement(this.rightSection, () => {
-        this.ngZone.run(() => {
-          this.rightVisible = true;
-          
-        });
-      });
-    }, 0);
+  @ViewChildren('colRef') cols!: QueryList<ElementRef>;
+  
+  leftVisible: boolean[] = [];
+  rightVisible: boolean[] = [];
+  
+  constructor(private ngZone: NgZone) {}
+  
+  ngOnInit() {
+    const len = this.aboutContent.description.length;
+    this.leftVisible = new Array(len).fill(false);
+    this.rightVisible = new Array(len).fill(false);
   }
-
+  
+  ngAfterViewInit() {
+    this.cols.forEach((elRef, index) => {
+      this.observeElement(elRef, () => {
+        this.ngZone.run(() => {
+          if (index % 2 === 0) this.leftVisible[index] = true;
+          else this.rightVisible[index] = true;
+        });
+      });
+    });
+    
+  }
+  
   observeElement(elRef: ElementRef, callback: () => void) {
     const observer = new IntersectionObserver(
-      ([entry]) => { 
-        if (entry.isIntersecting) { 
+      ([entry]) => {
+        if (entry.isIntersecting) {
           callback();
           observer.unobserve(entry.target);
         }
       },
-      {
-        threshold: 0.2
-      }
+      { threshold: 0.2 }
     );
-
+  
     if (elRef?.nativeElement) {
       observer.observe(elRef.nativeElement);
-    } else {
-      console.warn('⚠️ ElementRef not found:', elRef);
     }
   }
 }

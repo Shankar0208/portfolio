@@ -1,17 +1,19 @@
 <div class="border-b border-neutral-900 pb-4">
     <h2 class="my-20 text-4xl text-center">About <span class="text-neutral-500">Me</span></h2>
-    <div class="flex flex-wrap">
+    <!-- <div class="flex flex-wrap">
         <div class="w-full lg:w-1/2 lg:p-8">
             <div   #leftSection
             [@slideInLeft]="leftVisible ? 'visible' : 'hidden'" class="flex items-center justify-center">
                <img [src]="aboutContent.image" alt="Shankar">
             </div>
-        </div>
-        <div class="w-full lg:w-1/2">
-            <div   #rightSection
-            [@slideInRight]="rightVisible ? 'visible' : 'hidden'" class="flex justify-center lg:justify-start">
-                <p class="my-2 max-w-xl py-6">{{aboutContent.description}}</p>
-            </div>
-        </div>
-    </div>
+        </div> -->
+        @for(item of aboutContent.description; track $index; let i = $index;){ 
+                <div #colRef [@slideInLeft]="i % 2 === 0 ? (leftVisible[i] ? 'visible' : 'hidden') : null"
+                [@slideInRight]="i % 2 === 1 ? (rightVisible[i] ? 'visible' : 'hidden') : null" >
+                    <p class="my-2 text-center py-6">{{item}}</p>
+                </div>   
+        }
+            
+         
+    <!-- </div> -->
 </div>
