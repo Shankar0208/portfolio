@@ -7,8 +7,7 @@ import { aboutContent } from '../models/constants';
 import { sideTrigger } from '../models/animations';
 
 @Component({
-  selector: 'app-about',
-  standalone: true,  
+  selector: 'app-about', 
   imports: [ ],
   templateUrl: './about.html',
   styleUrl: './about.css',

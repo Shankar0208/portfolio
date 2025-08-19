@@ -29,16 +29,14 @@ export class Projects {
     // Left column observers
     this.leftCols.forEach((elRef, index) => {
       this.observeElement(elRef, () => {
-        this.ngZone.run(() => (this.leftVisible[index] = true));
-        console.log(`➡️ leftVisible[${index}] = true`);
+        this.ngZone.run(() => (this.leftVisible[index] = true)); 
       });
     });
   
     // Right column observers
     this.rightCols.forEach((elRef, index) => {
       this.observeElement(elRef, () => {
-        this.ngZone.run(() => (this.rightVisible[index] = true));
-        console.log(`➡️ rightVisible[${index}] = true`);
+        this.ngZone.run(() => (this.rightVisible[index] = true)); 
       });
     });
   }
